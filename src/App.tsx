@@ -8,6 +8,15 @@ const options: SelectProps[] = [
   { value: "sport", label: "Sport", emoji: "⚽️" },
   { value: "games", label: "Games", emoji: "🎮" },
   { value: "health", label: "Health", emoji: "🏥" },
+  { value: "music", label: "Music", emoji: "🎵" },
+  { value: "technology", label: "Technology", emoji: "💻" },
+  { value: "travel", label: "Travel", emoji: "✈️" },
+  { value: "food", label: "Food & Drink", emoji: "🍕" },
+  { value: "finance", label: "Finance", emoji: "💰" },
+  { value: "movies", label: "Movies & TV", emoji: "🎬" },
+  { value: "nature", label: "Nature", emoji: "🌳" },
+  { value: "fashion", label: "Fashion", emoji: "👗" },
+  { value: "history", label: "History", emoji: "📜" },
 ];
 
 function App() {

@@ -1,6 +1,7 @@
 $primary: #8895d3;
 $secondary: #c3c5c75e;
 $gray: #717175;
+$gray-light:#C7C9CA;
 $primary-light: #a0b4fa;
 $light: #f7f7f7;
 $white: #fff;
@@ -60,6 +61,29 @@ body {
         border-radius: 0.6rem;
         border: 2px solid $secondary;
         color: $gray;
+        scrollbar-width: thin;
+        scrollbar-color: $gray-light $light;
+
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+        &::-webkit-scrollbar-track {
+          background: $light;
+          border-radius: 3px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: $primary-light;
+          border-radius: 3px;
+          border: 1px solid $white;
+        }
+        &::-webkit-scrollbar {
+          opacity: 0;
+          transition: opacity 0.2s;
+        }
+        &:hover::-webkit-scrollbar {
+          opacity: 1;
+        }
+        scroll-behavior: smooth;
 
         .select-item {
           display: flex;
