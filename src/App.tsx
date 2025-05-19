@@ -15,10 +15,7 @@ function App() {
 
   return (
     <div className="main-wrapper">
-      <div className="container">
-        <Select options={options} selected={selected} onChange={setSelected} />
-        <p>{selected.label}</p>
-      </div>
+      <Select options={options} selected={selected} onChange={setSelected} />
     </div>
   );
 }

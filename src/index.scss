@@ -1,12 +1,17 @@
-$primary-color: #0070f3;
-$light-color: #f1f5f9;
+$primary: #8895d3;
+$secondary: #c3c5c75e;
+$gray: #717175;
+$primary-light: #a0b4fa;
+$light: #f7f7f7;
+$white: #fff;
 
 html,
 body {
   padding: 0;
   margin: 0;
-  background-color: $light-color;
+  background-color: $light;
   box-sizing: border-box;
+  font-family: "sans-serif";
 
   .main-wrapper {
     min-height: 100vh;
@@ -15,8 +20,70 @@ body {
     justify-content: center;
     align-items: center;
 
-    .container{
- 
+    .form-control {
+      position: relative;
+      width: 250px;
+
+      .select-control {
+        font-size: small;
+        cursor: pointer;
+        padding: 0.5rem 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 2px solid $primary;
+        background-color: $white;
+        border-radius: 0.6rem;
+        color: $gray;
+
+        .icon {
+          display: flex;
+        }
+
+        &:focus {
+          box-shadow: 0 0 0 0.18rem #8894d33d;
+          border-color: #8895d3;
+          outline: none;
+        }
+      }
+
+      .select-menus {
+        position: absolute;
+        right: 0;
+        left: 0;
+        width: 100%;
+        background: $white;
+        margin-top: 0.5rem;
+        max-height: 250px;
+        overflow-y: auto;
+        z-index: 10;
+        padding: 1rem 0rem;
+        border-radius: 0.6rem;
+        border: 2px solid $secondary;
+        color: $gray;
+
+        .select-item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: small;
+          cursor: pointer;
+          margin: 0.4rem;
+          padding: 0.28rem 0.4rem;
+          border-radius: 0.5rem;
+          &:hover {
+            background: rgba(136, 148, 211, 0.144);
+            color: $primary;
+          }
+        }
+        span {
+          margin-right: 5px;
+        }
+        .selected {
+          background-color: rgba(136, 148, 211, 0.144);
+          color: $primary;
+        }
+      }
     }
   }
 }

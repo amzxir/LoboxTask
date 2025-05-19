@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { IoIosArrowUp, IoIosArrowDown, IoMdCheckmark } from "react-icons/io";
 
 type SelectType<T> = {
   options: SelectProps<T>[];
@@ -23,29 +24,39 @@ export function Select<T>({ options, selected, onChange }: SelectType<T>) {
   }, []);
 
   return (
-    <div ref={containerRef} className="">
-      <div className="" onClick={() => setIsOpen((o) => !o)}>
+    <div ref={containerRef} className="form-control">
+      <div
+        className="select-control"
+        onClick={() => setIsOpen((o) => !o)}
+        tabIndex={0}
+      >
         <span>
-          {selected.emoji && <span>{selected.emoji}</span>}
           {selected.label}
+          {selected.emoji && <span>{selected.emoji}</span>}
         </span>
-        <span>{isOpen ? "▴" : "▾"}</span>
+        <span className="icon">
+          {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
+        </span>
       </div>
 
       {isOpen && (
-        <div>
+        <div className="select-menus">
           {options.map((opt) => {
             const isSel = opt.value === selected.value;
             return (
               <div
+                className={`select-item ${isSel ? "selected" : ""}`}
                 key={String(opt.value)}
                 onClick={() => {
                   onChange(opt);
                   setIsOpen(false);
                 }}
               >
-                {opt.emoji && <span>{opt.emoji}</span>}
-                {opt.label}
+                <span>
+                  {opt.label}
+                  {opt.emoji && <span>{opt.emoji}</span>}
+                </span>
+                {isSel ? <IoMdCheckmark /> : null}
               </div>
             );
           })}
