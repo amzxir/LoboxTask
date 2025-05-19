@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { IoIosArrowUp, IoIosArrowDown, IoMdCheckmark } from "react-icons/io";
+import { IoIosArrowUp, IoMdCheckmark } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
 
 type SelectType<T> = {
@@ -41,7 +41,7 @@ export function Select<T>({ options, selected, onChange }: SelectType<T>) {
           transition={{ duration: 0.2, ease: "easeOut" }}
           className="icon"
         >
-          {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
+          <IoIosArrowUp />
         </motion.span>
       </div>
       <AnimatePresence>
