@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { IoIosArrowUp, IoIosArrowDown, IoMdCheckmark } from "react-icons/io";
+import { motion, AnimatePresence } from "framer-motion";
 
 type SelectType<T> = {
   options: SelectProps<T>[];
@@ -34,34 +35,47 @@ export function Select<T>({ options, selected, onChange }: SelectType<T>) {
           {selected.label}
           {selected.emoji && <span>{selected.emoji}</span>}
         </span>
-        <span className="icon">
+        <motion.span
+          initial={false}
+          animate={{ rotate: isOpen ? 0 : 180 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="icon"
+        >
           {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
-        </span>
+        </motion.span>
       </div>
-
-      {isOpen && (
-        <div className="select-menus">
-          {options.map((opt) => {
-            const isSel = opt.value === selected.value;
-            return (
-              <div
-                className={`select-item ${isSel ? "selected" : ""}`}
-                key={String(opt.value)}
-                onClick={() => {
-                  onChange(opt);
-                  setIsOpen(false);
-                }}
-              >
-                <span>
-                  {opt.label}
-                  {opt.emoji && <span>{opt.emoji}</span>}
-                </span>
-                {isSel ? <IoMdCheckmark /> : null}
-              </div>
-            );
-          })}
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="select-menus"
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={{ opacity: 1, scaleY: 1 }}
+            exit={{ opacity: 0, scaleY: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            style={{ originY: 0 }}
+          >
+            {options.map((opt) => {
+              const isSel = opt.value === selected.value;
+              return (
+                <div
+                  className={`select-item ${isSel ? "selected" : ""}`}
+                  key={String(opt.value)}
+                  onClick={() => {
+                    onChange(opt);
+                    setIsOpen(false);
+                  }}
+                >
+                  <span>
+                    {opt.label}
+                    {opt.emoji && <span>{opt.emoji}</span>}
+                  </span>
+                  {isSel ? <IoMdCheckmark /> : null}
+                </div>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

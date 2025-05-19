@@ -11,7 +11,7 @@ const options: SelectProps[] = [
 ];
 
 function App() {
-  const [selected, setSelected] = useState<SelectProps>(options[1]);
+  const [selected, setSelected] = useState<SelectProps>(options[0]);
 
   return (
     <div className="main-wrapper">
